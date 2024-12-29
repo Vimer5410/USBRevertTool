@@ -57,6 +57,10 @@
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.0.5, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

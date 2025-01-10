@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("USBRevertTool")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4baf9c28678519add73373d68d3972a511a39678")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33fc698eb6f180939840814c1a17b1439a9b18f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("USBRevertTool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("USBRevertTool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

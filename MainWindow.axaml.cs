@@ -20,26 +20,27 @@ public partial class MainWindow : Window
     {
         
         InitializeComponent();
+        DiskPart.Initialize(this);
     }
 
      static int GetUsbNum()
      {
          List<string> drivesName=new List<string>();
-         DriveInfo[] driveInfo = DriveInfo.GetDrives();
+         int UsbNum = 0;
          foreach (ManagementObject managementObject in new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive").Get())
          {
-             var mo = managementObject.GetPropertyValue("name").ToString();
+             var mo = managementObject.GetPropertyValue("InterfaceType").ToString();
              drivesName.Add(mo);
              Console.WriteLine(mo);
          }
          foreach (var el in drivesName)
          {
-             if (el.Contains(""))
+             if (el.Contains("USB"))
              {
-                     
+                 UsbNum= drivesName.IndexOf(el)+1;
              }
          }
-         return drivesName.Count ;
+         return UsbNum;
      }
     
     private async void ClearButton_OnClick(object? sender, RoutedEventArgs e)
@@ -47,5 +48,6 @@ public partial class MainWindow : Window
         var command = "list disk";
         var fleshNum =GetUsbNum();
         Console.WriteLine(fleshNum);
+        await DiskPart.Getcommand(command, 10);
     }
 }

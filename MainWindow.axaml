@@ -6,5 +6,9 @@
         x:Class="USBRevertTool.MainWindow"
         Title="USBRevertTool">
 
-    <Button Content="Clear" Click="ClearButton_OnClick" HorizontalAlignment="Center"></Button>
+    <Grid>
+        <Button Content="Clear" Click="ClearButton_OnClick" HorizontalAlignment="Center"></Button>
+        <TextBox Name="TextOutput" Background="Aqua" Height="100" Width="250" VerticalAlignment="Bottom"></TextBox>
+    </Grid>
+    
 </Window>

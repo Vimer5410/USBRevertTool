@@ -6,8 +6,14 @@ namespace USBRevertTool;
 
 public static class DiskPart
 {
-    public static async Task Getcommand(string command, int fleshNum)
+    private static MainWindow _mainWindow;
+    public static void Initialize(MainWindow mainWindow)
     {
+        _mainWindow = mainWindow;
+    }
+    public static async Task<string> Getcommand(string command, int fleshNum)
+    {
+        
         var processInfo = new ProcessStartInfo("diskpart.exe")
         {
             RedirectStandardInput = true,
@@ -39,18 +45,26 @@ public static class DiskPart
                 var output = await Process.StandardOutput.ReadToEndAsync();
                 var errorOutput = await Process.StandardError.ReadToEndAsync();
 
-                Console.WriteLine(output);
                 if (!string.IsNullOrEmpty(errorOutput))
-                {
+                {   
                     Console.WriteLine("Ошибки:");
                     Console.WriteLine(errorOutput);
+                    _mainWindow.TextOutput.Text = errorOutput;
+                    return errorOutput;
                 }
+                
+                Console.WriteLine(output);
+                _mainWindow.TextOutput.Text = output;
+                return output;
+
             }
             catch (Exception e)
             {
                 Console.WriteLine("Произошла ошибка: " + e.Message);
             }
         }
-    }
 
+        _mainWindow.TextOutput.Text = "!!!";
+        return "";
+    }
 }

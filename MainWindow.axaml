@@ -1,14 +1,76 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="USBRevertTool.MainWindow"
-        Title="USBRevertTool">
+        Title="USBRevertTool"
+        Width="400" Height="300"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False">
 
     <Grid>
-        <Button Content="Clear" Click="ClearButton_OnClick" HorizontalAlignment="Center"></Button>
-        <TextBox Name="TextOutput" Background="Aqua" Height="100" Width="250" VerticalAlignment="Bottom"></TextBox>
-    </Grid>
-    
+        
+        <Canvas x:Name="canvas1"
+                Background="Black"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top">
+        </Canvas>
+        
+    <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+        
+                <TextBlock Text="USB Flash Drive Formatter" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,20"/>
+        
+                <ComboBox Name="FileSystemComboBox" 
+                           Grid.Row="0" 
+                           Margin="10,30" 
+                           HorizontalAlignment="Center" 
+                           Width="200">
+                    <ComboBoxItem Content="FAT32"/>
+                    <ComboBoxItem Content="NTFS"/>
+                    <ComboBoxItem Content="exFAT"/>
+                </ComboBox>
+        
+                
+                <TextBox Name="TextOutput" 
+                          Grid.Row="1" 
+                          Background="#FFFFFF" 
+                          Height="100" 
+                          Margin="10"
+                          Foreground="Chartreuse"
+                          IsReadOnly="True" 
+                          IsHitTestVisible="False"
+                          VerticalAlignment="Stretch" 
+                          AcceptsReturn="True" 
+                          TextWrapping="Wrap" 
+                          BorderBrush="#CCCCCC" 
+                          BorderThickness="1"/>
+        
+                <Button Content="Clear" 
+                        Grid.Row="2" 
+                        Click="ClearButton_OnClick" 
+                        HorizontalAlignment="Center" 
+                        Margin="10" 
+                        Padding="10,5"
+                        Background="#4CAF50" 
+                        Foreground="#FFFFFF"
+                        CornerRadius="5">
+                    <Button.Styles>
+                        <Style Selector="Button:pointerover ContentPresenter">
+                            <Setter Property="Background" Value="#81C784"></Setter>
+                        </Style>
+                    </Button.Styles>
+                </Button>
+        
+            </Grid>
+        </Grid>
+
 </Window>

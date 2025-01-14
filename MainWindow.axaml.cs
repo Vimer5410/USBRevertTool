@@ -21,6 +21,8 @@ public partial class MainWindow : Window
         
         InitializeComponent();
         DiskPart.Initialize(this);
+        ParticleAnimation.Initialize(this);
+        ParticleAnimation.StartAnimation();
     }
 
      static int GetUsbNum()
@@ -37,7 +39,7 @@ public partial class MainWindow : Window
          {
              if (el.Contains("USB"))
              {
-                 UsbNum= drivesName.IndexOf(el)+1;
+                 UsbNum= drivesName.IndexOf(el);
              }
          }
          return UsbNum;
@@ -48,6 +50,6 @@ public partial class MainWindow : Window
         var command = "list disk";
         var fleshNum =GetUsbNum();
         Console.WriteLine(fleshNum);
-        await DiskPart.Getcommand(command, 10);
+        await DiskPart.Getcommand(command, GetUsbNum());
     }
 }

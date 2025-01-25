@@ -2,13 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="USBRevertTool.MainWindow"
         Title="USBRevertTool"
-        Width="400" Height="300"
+        Width="400" Height="370"
         TransparencyLevelHint="AcrylicBlur"
-        Background="#0d0d0d"
+        
         WindowStartupLocation="CenterScreen"
-        CanResize="False">
+        CanResize="False"
+        SystemDecorations="None">
 
-    <Grid>
+ <Border Background="#0d0d0d" BorderBrush="#CCCCCC" BorderThickness="1" CornerRadius="5" >
+     <Grid>
         
         <Canvas x:Name="canvas1"
                 Background="Black"
@@ -20,30 +22,59 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
         
                 <TextBlock Text="USB Flash Drive Formatter" 
                            FontSize="24" 
                            FontWeight="Bold" 
+                           Foreground="#9a002b"
                            HorizontalAlignment="Center" 
                            Margin="0,0,0,20"/>
         
-                <ComboBox Name="FileSystemComboBox" 
-                           Grid.Row="0" 
-                           Margin="10,20,30,0" 
-                           HorizontalAlignment="Center" 
-                           Width="200">
-                    <ComboBoxItem Content="FAT32"/>
-                    <ComboBoxItem Content="NTFS"/>
-                    <ComboBoxItem Content="exFAT"/>
-                </ComboBox>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <ComboBox Name="FileSystemComboBox" 
+                                  Margin="10,0" 
+                                  HorizontalAlignment="Center" 
+                                  Width="150">
+                            <ComboBoxItem Content="FAT32"/>
+                            <ComboBoxItem Content="NTFS"/>
+                            <ComboBoxItem Content="exFAT"/>
+                        </ComboBox>
+                        <ComboBox Name="DiskLabelComboBox" 
+                                  Margin="10,5" 
+                                  HorizontalAlignment="Center" 
+                                  Width="150">
+                            <ComboBoxItem Content="Media"/>
+                            <ComboBoxItem Content="BackUp"/>
+                            <ComboBoxItem Content="Usb Drive"/>
+                            <ComboBoxItem Content="Custom"/>
+                        </ComboBox>
+                        <ComboBox Name="ActivePartitionComboBox" 
+                                  Margin="10,5" 
+                                  HorizontalAlignment="Center" 
+                                  Width="150">
+                            <ComboBoxItem Content="Active"/>
+                            <ComboBoxItem Content="None Active"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Text="Info:" Foreground="#ff0047" FontSize="18">
+                    </TextBlock>
+                </Grid>
+                
         
                 
                 <TextBox Name="TextOutput" 
-                          Grid.Row="1" 
-                          Background="" 
-                          Height="100" 
+                          Grid.Row="2" 
+                          Background="#1e1e1e" 
+                          Height="100"
                           Margin="10"
                           Foreground="Chartreuse"
                           IsReadOnly="True" 
@@ -55,10 +86,13 @@
                           BorderThickness="1"/>
         
                 <Button Content="Clear" 
-                        Grid.Row="2" 
+                        Grid.Row="3" 
                         Click="ClearButton_OnClick" 
                         HorizontalAlignment="Center" 
                         Margin="10" 
+                        Width="120"
+                        HorizontalContentAlignment="Center"
+                        FontSize="15"
                         Padding="10,5"
                         Background="#4CAF50" 
                         Foreground="#FFFFFF"
@@ -73,4 +107,5 @@
             </Grid>
         </Grid>
 
+ </Border>
 </Window>

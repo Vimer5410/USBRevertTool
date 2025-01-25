@@ -4,7 +4,7 @@
         Title="USBRevertTool"
         Width="400" Height="300"
         TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
+        Background="#0d0d0d"
         WindowStartupLocation="CenterScreen"
         CanResize="False">
 
@@ -31,7 +31,7 @@
         
                 <ComboBox Name="FileSystemComboBox" 
                            Grid.Row="0" 
-                           Margin="10,30" 
+                           Margin="10,20,30,0" 
                            HorizontalAlignment="Center" 
                            Width="200">
                     <ComboBoxItem Content="FAT32"/>
@@ -42,7 +42,7 @@
                 
                 <TextBox Name="TextOutput" 
                           Grid.Row="1" 
-                          Background="#FFFFFF" 
+                          Background="" 
                           Height="100" 
                           Margin="10"
                           Foreground="Chartreuse"
